@@ -94,13 +94,90 @@ valuesHaveBeenRepeated();
 // - LO PUEDO SALTAR!!!! Crea una función que reciba un número y te diga si es primo o no. Un número primo es aquel que sólo puede dividirse por si mismo
 
 // - Crea una función que reciba un array de 10 números, imprime por consola cada número, su cuadrado y su cubo en este formato: "Número: 2 \- Cuadrado: 4 \- Cubo: 8". Nota: Dentro del objeto Math existe el método pow. Math.pow(número, exponente)
+const  theSquareAndTheCube= (array) => {
+  for (let i = 0; i < array.length; i++) {
+    let square = Math.pow(array[i], 2);
+    let cube = Math.pow(array[i], 3);
+    console.log(`numero: ${array[i]} - cuadrado: ${square} - cubo: ${cube} `);
+  }
+};
+theSquareAndTheCube(([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]));
 
 // - Crea una función que reciba una palabra e imprima por consola esa palabra pero con las vocales en mayúscula.
+const printTheSameWord =(word) => {
+  const aei='aeiouAEIOU'
+  let newWord = ''
+  for (let i=0; i<=word.length; i++){
+    let letter = word[i]
+    if(aei.includes(letter)){
+      newWord+=letter.toUpperCase()
+    } else { 
+      newWord+=letter
+    }
+  }
+  console.log(newWord);
+}
+printTheSameWord('hola')
 
 // - Crea una función que reciba una frase e imprima el número de veces que se repite cada vocal, por ejemplo para la frase "Enrique ordeña cabras", el resultado por consola debe ser: a: 3, e: 3, i: 1, o: 1, u: 1
+const repetitionOfEachVowel = (phrase)=>{
+  const aei='aeiou'
+  let marc = {a:0, e:0,i:0,o:0,u:0}
+  for (let i=0; i<phrase.length; i++){
+    let letters = phrase[i].toLowerCase()
+    if(aei.includes(letters)){
+    marc[letters]++
+    }
+  }
+  console.log(`a : ${marc['a']},e : ${marc['e']},i : ${marc['i']},o : ${marc['o']},u : ${marc['u']}`);
 
+}
+repetitionOfEachVowel('Enrique ordeña cabras')
 // - Crea una función que reciba dos palabras e intercale las letras de cada una para formar una nueva palabra. Si la función recibe (hola, adios) el resultado será "haodliao", pero si recibe (adios, hola) el resultado será "ahdoiloa"
+const interleaveLetters = (word1,word2) =>{
+  let phrase =''
+  const maxphrase = Math.max(word1.length, word2.length)
+  for (let i=0; i<=maxphrase; i++){
+ if (i<word1.length){
+  phrase +=word1[i]
+ }
+ if (i<word2.length){
+  phrase +=word2[i]
+  }
+}
+console.log (phrase)
+}
+interleaveLetters('hola','adios');
+  // - Crea una función que reciba una palabra e imprima la misma palabra en orden inverso conservando las mayúsculas y las minúsculas. Si recibe "Mariposas" deberá imprimir "sasopiraM"
+  const sameWordInReverseOrder = (word) =>{
+    let phrase =''
+    const reverse =word.length
+    for (let i=reverse; i>=0; i--){
+      if (i<reverse){
+        phrase +=word[i]
+       }
+    }
+    console.log (phrase)
+  }
+sameWordInReverseOrder('Mariposa')
+/* Crea una función que reciba un array con 5 palabras, 
+debes imprimir por consola un array que contenga la inicial y 
+la última letra de cada palabra en mayúsculas, es decir, si 
+nuestra función recibiera un array con \['hola', 'adios', 'gato', 'perro', 'casa'\] 
+deberá imprimir por consola \['H', 'A', 'A', 'S', 'G', 'O', 'P','O', 'C', 'A'\]*/
 
-// - Crea una función que reciba una palabra e imprima la misma palabra en orden inverso conservando las mayúsculas y las minúsculas. Si recibe "Mariposas" deberá imprimir "sasopiraM"
+const printInitialAndLastLetter = (array)=>{
+  const array0=[]
+  for (let i=0; i<array.length; i++){
+    const word = array[i];
+      const firstLetter = word[0].toUpperCase();
+      const lastLetter = word[word.length -1].toUpperCase();
 
-// - Crea una función que reciba un array con 5 palabras, debes imprimir por consola un array que contenga la inicial y la última letra de cada palabra en mayúsculas, es decir, si nuestra función recibiera un array con \['hola', 'adios', 'gato', 'perro', 'casa'\] deberá imprimir por consola \['H', 'A', 'A', 'S', 'G', 'O', 'P','O', 'C', 'A'\]
+      array0.push(firstLetter);
+      array0.push(lastLetter);
+    }
+    console.log(array0);
+
+  }
+
+printInitialAndLastLetter(['hola', 'adios', 'gato', 'perro', 'casa']);
